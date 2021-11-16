@@ -16,13 +16,15 @@ def main():
         print('2 = decripta\n')
         print('3 = esc\n')
         cont = int(input(">> "))
-        critt()
+        if cont == 1:
+            critt()
+        if cont == 2:
+            decritt()
 
 
 def critt():
     daCif = str(input("Inserisci il messaggio da cifrare: "))
-    key = int(input("Inserisci la chiave di crittazione: "))
-    carattere = ''
+    key = int(input("Inserisci la chiave di cifratura: "))
     testoCritt = ""
     daCif = daCif.upper()
 
@@ -41,7 +43,21 @@ def critt():
 
 def decritt():
     daDec = str(input("Inserisci il messaggio da decifrare: "))
-    key = int(input("Inserisci la chiave di crittazione: "))
+    key = int(input("Inserisci la chiave di cifratura: "))
+    testoDecritt = ""
+    daDec = daDec.upper()
+
+    for charMess in range(len(daDec)):
+        index = alpha.index(daDec[charMess])
+        for cntK in range(key):
+            index = index -1
+
+            if index < 0:
+                index = len(alpha) - 1
+        carattere = alpha[index]
+        testoDecritt += carattere
+
+    print("Messaggio decrittato: " + testoDecritt)
 
 
 main()
